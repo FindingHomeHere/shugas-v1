@@ -1,0 +1,52 @@
+{
+  "name": "shugas",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.4.2",
+    "@chakra-ui/theme-tools": "1.1.2",
+    "@emotion/react": "11.1.5",
+    "@emotion/styled": "11.1.5",
+    "@mikecousins/react-pdf": "^5.5.1",
+    "@svgr/webpack": "^5.5.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.4.1",
+    "cookie-cutter": "^0.2.0",
+    "framer-motion": "^4.0.3",
+    "html-to-text": "^8.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash.throttle": "^4.1.1",
+    "lru-cache": "^6.0.0",
+    "mapbox-gl": "^2.2.0",
+    "mongoose": "^5.12.14",
+    "multer": "^1.4.2",
+    "next": "latest",
+    "next-connect": "^0.10.1",
+    "nodemailer": "^6.6.1",
+    "nookies": "^2.5.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.2",
+    "react": "^17.0.2",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^17.0.2",
+    "react-dropzone": "8.1.0",
+    "react-icons": "^4.2.0",
+    "react-input-mask": "^2.0.4",
+    "react-pdf": "^5.3.0",
+    "react-sizeme": "^3.0.1",
+    "swr": "^0.5.6",
+    "validator": "^13.6.0"
+  },
+  "license": "MIT",
+  "resolutions": {
+    "webpack": "^5.0.0-beta.30"
+  }
+}
