@@ -11,7 +11,12 @@ const FormContainer = styled(Box)`
 const Login = () => {
   return (
     <Flex py={4} align='center' justify='center' minH='80vh'>
-      <FormContainer p={40} bg='brandAlpha.700' direction='column'>
+      <FormContainer
+        w={{ base: '100%', sm: '650px' }}
+        p={12}
+        bg='brandAlpha.700'
+        direction='column'
+      >
         <LoginForm />
       </FormContainer>
     </Flex>

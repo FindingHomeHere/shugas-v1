@@ -16,6 +16,7 @@ const signToken = (id) => {
 
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
+  console.log(token);
 
   const cookieOptions = {
     expires: new Date(
@@ -26,7 +27,7 @@ const createSendToken = (user, statusCode, res) => {
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
-  res.setHeader('Set-Cookie', serialize(token, cookieOptions));
+  res.setHeader('Set-Cookie', serialize('jwt', token, cookieOptions));
 
   user.password = undefined;
 

@@ -48,7 +48,7 @@ const LoginForm = () => {
         userData = user.data;
         const token = userData.token;
         cookie.set('jwt', token, {
-          httpOnly: true,
+          maxAge: process.env.JWT_COOKIE_EXPIRES_IN * 86400000, // 86400000 ms in a day
         });
         router.push('/admin/dashboard');
         setIsLoading(false);
@@ -69,10 +69,11 @@ const LoginForm = () => {
     <>
       <Heading mb={2}>login</Heading>
       <VStack>
-        <form onSubmit={handleSubmit}>
+        <form style={{ width: '100%' }} onSubmit={handleSubmit}>
           <FormControl id='email'>
             <FormLabel>email</FormLabel>
             <Input
+              w='100%'
               onChange={handleEmailChange}
               placeholder='me@example.com'
               value={email}
@@ -82,10 +83,11 @@ const LoginForm = () => {
           <FormControl>
             <FormLabel id='password'>password</FormLabel>
             <Input
+              w='100%'
               name='password'
               onChange={handlePasswordChange}
               value={password}
-              placeholder='keep it secret'
+              placeholder='keep it super secret'
               type='password'
             />
           </FormControl>

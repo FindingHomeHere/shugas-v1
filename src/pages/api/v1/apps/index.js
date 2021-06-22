@@ -5,6 +5,7 @@ import Application from '../../../../../models/applicationModel';
 import AppError from '../../../../../util/appError';
 import dbConnect from '../../../../../util/mongodb';
 import Email from '../../../../../util/email';
+import { identity } from 'lodash';
 
 const connect = async () => await dbConnect();
 
@@ -74,21 +75,39 @@ const updateApp = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(400).json({ status: 'Error', data: err });
+    console.log('UPDATE APPLICATION ERROR 🌪', err);
+    res.status(500).json({
+      status: 'error',
+      data: {
+        err,
+      },
+    });
   }
 };
 
 const deleteApp = async (req, res, next) => {
-  const doc = await Application.findByIdAndDelete(req.params.id);
+  try {
+    await dbConnect();
+    const id = req.body.id;
+    const doc = await Application.findByIdAndDelete(id);
 
-  if (!doc) {
-    return next(new AppError('No document found with that ID', 404));
+    if (!doc) {
+      return next(new AppError('No document found with that ID', 404));
+    }
+
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (err) {
+    console.log('DELETE APPLICATION ERROR 🌪', err);
+    res.status(500).json({
+      status: 'error',
+      data: {
+        err,
+      },
+    });
   }
-
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
 };
 
 const onError = (err, req, res) => {
@@ -105,8 +124,8 @@ const handler = nextConnect({
 handler.get(getAllApps);
 handler.use(uploadResume);
 handler.post(createApp);
-handler.patch('/api/v1/apps/:id', updateApp);
-handler.delete('/api/v1/apps/:id', deleteApp);
+handler.patch('/:id', updateApp);
+handler.delete(deleteApp);
 
 export default handler;
 

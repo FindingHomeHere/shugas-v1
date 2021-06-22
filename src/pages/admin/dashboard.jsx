@@ -64,6 +64,7 @@ export const getServerSideProps = async ({ req }) => {
         Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 86400000
       ), // 86400000 ms in a day
       httpOnly: true,
+      sameSite: true,
     };
 
     if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
@@ -72,15 +73,17 @@ export const getServerSideProps = async ({ req }) => {
       setCookie(req, 'jwt', token.jwt, cookieOptions);
     }
 
+    const method = req.protocol ? req.protocol : 'http';
+
     const res = await axios({
       method: 'GET',
-      url: `${req.protocol}://${req.headers.host}/api/v1/users/me`,
+      url: `${method}://${req.headers.host}/api/v1/users/me`,
       headers:
         token.jwt === undefined ? '' : { Authorization: `Bearer ${token.jwt}` },
     });
 
     const user = res.data.data.data;
-    if (!user || !token || !token.jwt) {
+    if (!user || !token || !token.jwt || !token.jwt.length) {
       return new Error('Unauthorized');
     }
 

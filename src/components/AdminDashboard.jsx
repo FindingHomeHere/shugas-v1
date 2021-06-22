@@ -19,11 +19,11 @@ const AdminDashboard = (user) => {
 
   const token = user.token;
   const Backdrop = styled(Flex)`
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(14px);
   `;
 
   return (
-    <Backdrop p={20} bg='brandAlpha.700'>
+    <Backdrop p={20} w='100vw' px='auto' bg='brandAlpha.700'>
       <Tabs p={4} isFitted variant='solid-rounded' colorScheme='brandAlpha'>
         <Flex>
           <Heading>Hey, {userInfo.name.split(' ')[0]}</Heading>
