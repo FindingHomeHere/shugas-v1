@@ -71,8 +71,6 @@ export const getServerSideProps = async ({ req }) => {
       setCookie(req, 'jwt', token.jwt, cookieOptions);
     }
 
-    console.log(token);
-
     const method = req.protocol ? req.protocol : 'http';
 
     const res = await axios({

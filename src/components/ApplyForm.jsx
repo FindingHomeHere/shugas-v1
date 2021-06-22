@@ -22,7 +22,7 @@ export default class ApplyForm extends React.Component {
       name: '',
       email: '',
       phone: '',
-      position: '',
+      position: 'foh',
       question1: '',
       question2: '',
       question3: '',
@@ -55,7 +55,6 @@ export default class ApplyForm extends React.Component {
     }
     if (e.target.files) {
       if (e.target.files[0].type === 'application/pdf') {
-        console.log(e.target.files[0]);
         this.setState({ resume: e.target.files[0], error: { resume: '' } });
       } else {
         this.setState({
@@ -66,9 +65,6 @@ export default class ApplyForm extends React.Component {
   }
 
   phoneFormat(e) {
-    // if (!e.currentTarget.value) {
-    //   return;
-    // }
     if (e.currentTarget.value !== null) {
       const x = e.currentTarget.value
         .replace(/\D/g, '')
@@ -92,7 +88,7 @@ export default class ApplyForm extends React.Component {
       formData.append('question2', this.state.question2);
       formData.append('question3', this.state.question3);
 
-      await axios({
+      const res = await axios({
         method: 'POST',
         url: `/api/v1/apps`,
         headers: {
@@ -101,7 +97,9 @@ export default class ApplyForm extends React.Component {
         data: formData,
       });
 
-      alert('Your application has been sent!');
+      if (res.status === 'ok') {
+        alert('Your application has been sent!');
+      }
     } catch (err) {
       console.error(err);
     }
@@ -134,6 +132,7 @@ export default class ApplyForm extends React.Component {
             <Input
               onChange={this.onChange}
               onKeyDown={this.phoneFormat}
+              onPaste={this.phoneFormat}
               name='phone'
               type='tel'
               value={this.state.phone}
@@ -146,7 +145,9 @@ export default class ApplyForm extends React.Component {
               value={this.state.position}
               name='position'
             >
-              <option value='foh'>Front of House</option>
+              <option selected value='foh'>
+                Front of House
+              </option>
               <option value='boh'>Back of House</option>
               <option value='prep'>Prep</option>
             </Select>

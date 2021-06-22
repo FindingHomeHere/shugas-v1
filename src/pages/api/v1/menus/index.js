@@ -13,8 +13,6 @@ const upload = multer({
   }),
 });
 
-console.log(upload);
-
 const uploadMenu = upload.single('menu');
 
 const createMenu = async (req, res) => {

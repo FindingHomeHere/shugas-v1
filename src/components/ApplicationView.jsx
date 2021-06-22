@@ -52,7 +52,6 @@ const ApplicationView = (props) => {
   const handleRead = async (e) => {
     const id = e.target.closest('button').value;
     try {
-      // console.log(id);
       await axios({
         method: 'PATCH',
         url: `/api/v1/apps/${id}`,
@@ -95,9 +94,6 @@ const ApplicationView = (props) => {
     }
   };
 
-  if (!isValidating && !apps.data) {
-  }
-
   return (
     <>
       {isValidating && <Spinner colorScheme='brand' />}
@@ -106,13 +102,6 @@ const ApplicationView = (props) => {
           <Text variant='typewriter' color='red.200'>
             error fetching new applications,
             <br /> try again!
-          </Text>
-        )}
-        {!isValidating && (
-          <Text variant='typewriter'>
-            Looks Like there are no applications yet...
-            <br />
-            Check back soon!
           </Text>
         )}
         {!isValidating && <Heading>New applications</Heading>}
