@@ -95,6 +95,9 @@ const ApplicationView = (props) => {
     }
   };
 
+  if (!isValidating && !apps.data) {
+  }
+
   return (
     <>
       {isValidating && <Spinner colorScheme='brand' />}
@@ -105,14 +108,14 @@ const ApplicationView = (props) => {
             <br /> try again!
           </Text>
         )}
-        {!isValidating && !!apps.data && (
+        {!isValidating && (
           <Text variant='typewriter'>
             Looks Like there are no applications yet...
             <br />
             Check back soon!
           </Text>
         )}
-        {!isValidating && !!apps.data && <Heading>New applications</Heading>}
+        {!isValidating && <Heading>New applications</Heading>}
         {!isValidating &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];
