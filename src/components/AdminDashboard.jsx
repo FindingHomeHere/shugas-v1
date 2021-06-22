@@ -26,7 +26,7 @@ const AdminDashboard = (user) => {
     <Backdrop p={20} bg='brandAlpha.700'>
       <Tabs p={4} isFitted variant='solid-rounded' colorScheme='brandAlpha'>
         <Flex>
-          <Heading>Heya, {userInfo.name.split(' ')[0]}</Heading>
+          <Heading>Hey, {userInfo.name.split(' ')[0]}</Heading>
         </Flex>
         <TabList mt={12}>
           <Tab>Applications</Tab>
