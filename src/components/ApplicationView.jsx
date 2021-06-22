@@ -183,9 +183,7 @@ const ApplicationView = (props) => {
               );
             }
           })}
-        {!isValidating && apps.data.length !== 0 && (
-          <Heading>Older applications</Heading>
-        )}
+        {!isValidating && <Heading>Older applications</Heading>}
         {!isValidating &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];
