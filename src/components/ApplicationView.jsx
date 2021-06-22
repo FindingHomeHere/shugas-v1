@@ -97,7 +97,7 @@ const ApplicationView = (props) => {
   return (
     <>
       {isValidating && <Spinner colorScheme='brand' />}
-      <VStack spacing={4} w='100%'>
+      <VStack spacing={4} w='100%' mx='auto'>
         {error && (
           <Text variant='typewriter' color='red.200'>
             error fetching new applications,
@@ -105,7 +105,7 @@ const ApplicationView = (props) => {
           </Text>
         )}
         {!isValidating && <Heading>New applications</Heading>}
-        {!isValidating &&
+        {!!apps.data &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];
             if (!el.isViewed) {
