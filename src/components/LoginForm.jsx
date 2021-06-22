@@ -50,10 +50,8 @@ const LoginForm = () => {
         cookie.set('jwt', token, {
           httpOnly: true,
         });
-        window.setTimeout(() => {
-          router.push('/admin/dashboard');
-          setIsLoading(false);
-        }, 2500);
+        router.push('/admin/dashboard');
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
