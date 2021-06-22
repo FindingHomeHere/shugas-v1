@@ -105,16 +105,14 @@ const ApplicationView = (props) => {
             <br /> try again!
           </Text>
         )}
-        {!isValidating && !!apps.data && apps.data.length === 0 && (
+        {!isValidating && !!apps.data && (
           <Text variant='typewriter'>
             Looks Like there are no applications yet...
             <br />
             Check back soon!
           </Text>
         )}
-        {!isValidating && !!apps.data && apps.data.length !== 0 && (
-          <Heading>New applications</Heading>
-        )}
+        {!isValidating && !!apps.data && <Heading>New applications</Heading>}
         {!isValidating &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];

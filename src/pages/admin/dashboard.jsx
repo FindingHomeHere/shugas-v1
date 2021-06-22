@@ -63,15 +63,15 @@ export const getServerSideProps = async ({ req }) => {
       expires: new Date(
         Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 86400000
       ), // 86400000 ms in a day
-      httpOnly: true,
-      sameSite: true,
     };
 
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+    // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
     const token = parseCookies(req);
     if (token.jwt) {
       setCookie(req, 'jwt', token.jwt, cookieOptions);
     }
+
+    console.log(token);
 
     const method = req.protocol ? req.protocol : 'http';
 
