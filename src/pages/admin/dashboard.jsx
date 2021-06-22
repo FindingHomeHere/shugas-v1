@@ -71,9 +71,10 @@ export const getServerSideProps = async ({ req }) => {
     if (token.jwt) {
       setCookie(req, 'jwt', token.jwt, cookieOptions);
     }
+
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/users/me',
+      url: `${req.protocol}://${req.headers.host}/api/v1/users/me`,
       headers:
         token.jwt === undefined ? '' : { Authorization: `Bearer ${token.jwt}` },
     });

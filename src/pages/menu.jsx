@@ -1,31 +1,26 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import axios from 'axios';
+import useSWR from 'swr';
 
 import MenuView from '../components/MenuView';
 
-const Menu = ({ data }) => {
+const Menu = () => {
+  let file;
+  const fetcher = (url) => axios.get(url).then((res) => res.data.data);
+  const { data, error, isValidating } = useSWR(
+    '/api/v1/menus/current',
+    fetcher
+  );
+  if (!!data) {
+    file = data;
+  }
   return (
     <Flex align='center' justify='center' width='100%'>
-      <MenuView data={data} />
+      {isValidating && <Spinner colorScheme='brand' />}
+      {file && !isValidating && <MenuView data={file} />}
     </Flex>
   );
-};
-
-export const getServerSideProps = async () => {
-  const res = await axios({
-    method: 'GET',
-    url: `${process.env.BASE_URL}/api/v1/menus/current`,
-  });
-  const data = await res.data.data.data;
-
-  const fileName = data.fileName;
-
-  return {
-    props: {
-      data: fileName,
-    },
-  };
 };
 
 export default Menu;

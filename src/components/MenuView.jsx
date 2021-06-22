@@ -58,9 +58,10 @@ class MenuView extends PureComponent {
 
 const PdfComponent = (props) => {
   const { doc, wrapperDivSize } = props;
+  console.log(doc.data.fileName);
   return (
     <div>
-      <Document file={`/uploads/menus/${doc}`} renderMode='svg'>
+      <Document file={`/uploads/menus/${doc.data.fileName}`} renderMode='svg'>
         <div style={{ marginBottom: '8px' }} />
         <Page pageIndex={0} width={wrapperDivSize} />
         <div style={{ marginBottom: '8px' }} />
