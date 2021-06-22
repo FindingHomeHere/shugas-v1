@@ -9,7 +9,7 @@ import { IconButton } from '@chakra-ui/button';
 
 const ApplicationView = (props) => {
   const { token } = props;
-  let apps = {};
+  let apps = {data: {}};
   const fetcher = (url) =>
     axios
       .get(url, { headers: { Authorization: `Bearer ${token}` } })
@@ -94,64 +94,73 @@ const ApplicationView = (props) => {
     }
   };
 
-  return (
-    <>
+  if (apps.data.length < 1 || !apps.data.length) {
+    return (
+      <>
+        <Text variant='typewriter'>Looks like no one has applied yet... try again soon!</Text>
+      </>
+    )
+  }
+  if (apps.data.length > 0) {
+
+    return (
+      <>
       {isValidating && <Spinner colorScheme='brand' />}
       <VStack spacing={4} w='100%' mx='auto'>
         {error && (
-          <Text variant='typewriter' color='red.200'>
+          <Text key={`${error}`} variant='typewriter' color='red.200'>
             error fetching new applications,
             <br /> try again!
           </Text>
         )}
         {!isValidating && <Heading>New applications</Heading>}
         {!!apps.data &&
-          apps.data.map((el) => {
+          apps.data.map((el, i) => {
             const firstName = el.name.split(' ')[0];
             if (!el.isViewed) {
               return (
                 <>
                   <Flex
-                    key={el._id}
+                    key={`${el._id}${i}`}
                     w='100%'
                     p={4}
                     borderWidth={1}
                     borderColor='brandAlpha.100'
                     borderRadius='md'
-                  >
-                    <Box key={`${el._id}-container`} w='100%'>
-                      <Heading key={`${el._id}-${el.firstName}`}>
+                    >
+                    <Box key={`${el._id}${i}-container`} w='100%'>
+                      <Heading key={`${el._id}${i}-${el.firstName}`}>
                         {el.name}
                       </Heading>
-                      <Text key={`${el._id}-${el.email}`}>{el.email}</Text>
-                      <Text key={`${el._id}-${el.phone}`}>{el.phone}</Text>
-                      <Text key={`${el._id}-${el.position}`}>
+                      <Text key={`${el._id}${i}-${el.email}`}>{el.email}</Text>
+                      <Text key={`${el._id}${i}-${el.phone}`}>{el.phone}</Text>
+                      <Text key={`${el._id}${i}-${el.position}`}>
                         <strong>Desired Position: </strong>
                         {el.position}
                       </Text>
-                      <Text key={`${el._id}-${el.question1}-1`}>
+                      <Text key={`${el._id}${i}-${el.question1}-1`}>
                         {el.question1}
                       </Text>
-                      <Text key={`${el._id}-${el.question2}-2`}>
+                      <Text key={`${el._id}${i}-${el.question2}-2`}>
                         {el.question2}
                       </Text>
-                      <Text key={`${el._id}-${el.question3}-3`}>
+                      <Text key={`${el._id}${i}-${el.question3}-3`}>
                         {el.question3}
                       </Text>
                       <Link
-                        key={`${el._id}-${el.resume}`}
+                        key={`${el._id}${i}-${el.resume}`}
                         href={`/uploads/resumes/${el.resume}`}
                         passHref
-                      >
+                        >
                         <Text as='a' variant='typewriterNav' target='_blank'>
                           View {firstName}'s resume!
                         </Text>
                       </Link>
                     </Box>
 
-                    <VStack key={`${el._id}-ButtonGroup`} spacing={1}>
+                    <VStack key={`${el._id}${i}-ButtonGroup`} spacing={1}>
                       <IconButton
-                        key={`${el._id}-deleteBtn`}
+                        key={`${el._id}${i}-deleteBtn`}
                         aria-label='Delete this Application'
                         tooltip='Delete this Application'
                         name='delete'
@@ -159,16 +168,16 @@ const ApplicationView = (props) => {
                         value={el._id}
                         onClick={handleDelete}
                         icon={<BsTrash />}
-                      />
+                        />
                       <IconButton
-                        key={`${el._id}-readBtn`}
+                        key={`${el._id}${i}-readBtn`}
                         aria-label='Mark as Read/unread'
                         name='isViewed'
                         colorScheme='brand'
                         value={el._id}
                         onClick={!el.isViewed ? handleRead : handleUnread}
                         icon={el.isViewed ? <BsEyeFill /> : <BsEye />}
-                      />
+                        />
                     </VStack>
                   </Flex>
                 </>
@@ -177,72 +186,72 @@ const ApplicationView = (props) => {
           })}
         {!isValidating && <Heading>Older applications</Heading>}
         {!isValidating &&
-          apps.data.map((el) => {
+          apps.data.map((el, i) => {
             const firstName = el.name.split(' ')[0];
             if (el.isViewed) {
               return (
                 <>
                   <Flex
-                    key={el._id}
+                    key={`${el._id}${i}`}
                     w='100%'
                     p={4}
                     borderWidth={1}
                     borderColor='brandAlpha.100'
                     borderRadius='md'
-                  >
-                    <Box key={`${el._id}-container-viewed`} w='100%'>
-                      <Heading key={`${el._id}-${el.firstName}-viewed`}>
+                    >
+                    <Box key={`${el._id}${i}-container-viewed`} w='100%'>
+                      <Heading key={`${el._id}${i}-${el.firstName}-viewed`}>
                         {el.name}
                       </Heading>
-                      <Text key={`${el._id}-${el.email}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.email}-viewed`}>
                         {el.email}
                       </Text>
-                      <Text key={`${el._id}-${el.phone}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.phone}-viewed`}>
                         {el.phone}
                       </Text>
-                      <Text key={`${el._id}-${el.position}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.position}-viewed`}>
                         <strong>Desired Position: </strong>
                         {el.position}
                       </Text>
-                      <Text key={`${el._id}-${el.question1}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.question1}1-viewed`}>
                         {el.question1}
                       </Text>
-                      <Text key={`${el._id}-${el.question2}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.question2}2-viewed`}>
                         {el.question2}
                       </Text>
-                      <Text key={`${el._id}-${el.question3}-viewed`}>
+                      <Text key={`${el._id}${i}-${el.question3}3-viewed`}>
                         {el.question3}
                       </Text>
                       <Link
-                        key={`${el._id}-${el.resume}-viewed`}
+                        key={`${el._id}${i}-${el.resume}-viewed`}
                         href={`/uploads/resumes/${el.resume}`}
                         passHref
-                      >
+                        >
                         <Text as='a' variant='typewriterNav' target='_blank'>
                           View {firstName}'s resume!
                         </Text>
                       </Link>
                     </Box>
 
-                    <VStack key={`${el._id}-ButtonGroupRead`} spacing={1}>
+                    <VStack key={`${el._id}${i}-ButtonGroupRead`} spacing={1}>
                       <IconButton
-                        key={`${el._id}-deleteBtnRead`}
+                        key={`${el._id}${i}-deleteBtnRead`}
                         aria-label='Delete this Application'
                         name='delete'
                         colorScheme='red'
                         value={el._id}
                         onClick={handleDelete}
                         icon={<BsTrash />}
-                      />
+                        />
                       <IconButton
-                        key={`${el._id}-unreadBtn`}
+                        key={`${el._id}${i}-unreadBtn`}
                         aria-label='Mark as Read/unread'
                         name='isViewed'
                         colorScheme='brand'
                         value={el._id}
                         onClick={!el.isViewed ? handleRead : handleUnread}
                         icon={el.isViewed ? <BsEyeFill /> : <BsEye />}
-                      />
+                        />
                     </VStack>
                   </Flex>
                 </>
@@ -252,6 +261,7 @@ const ApplicationView = (props) => {
       </VStack>
     </>
   );
+}
 };
 
 export default ApplicationView;

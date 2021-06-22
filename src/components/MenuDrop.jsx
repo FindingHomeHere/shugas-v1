@@ -51,7 +51,6 @@ export default class MenuDrop extends Component {
     }
     if (e.target.files) {
       if (e.target.files[0].type === 'application/pdf') {
-        console.log(e.target.files[0]);
         this.setState({ file: e.target.files[0], error: null });
       } else {
         this.setState({

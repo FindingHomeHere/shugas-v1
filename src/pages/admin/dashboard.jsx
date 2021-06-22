@@ -39,7 +39,7 @@ const Dashboard = (props) => {
         direction='column'
         align='center'
         justify='center'
-      >
+        >
         <Button
           colorScheme='brand'
           position='relative'
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
           right='-9rem'
           zIndex={10}
           onClick={() => onLogout()}
-        >
+          >
           Log out
         </Button>
         <AdminDashboard user={user} token={token} />
