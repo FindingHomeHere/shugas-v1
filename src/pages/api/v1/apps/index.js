@@ -36,10 +36,10 @@ const createApp = async (req, res) => {
   try {    
     const s3 = new aws.S3({
       credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY,
-        secretAccessKey: process.env.AWS_SECRET_KEY,
+        accessKeyId: process.env.AWS_PUBLIC_KEY,
+        secretAccessKey: process.env.AWS_HIDDEN_KEY,
       },
-      region: process.env.AWS_REGION,
+      region: process.env.AWS_AREA,
     });
 
     const params = {
