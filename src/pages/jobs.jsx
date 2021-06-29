@@ -18,7 +18,7 @@ const Jobs = () => {
       >
         <Heading>Want to join our amazing crew?</Heading>
         <Text mt={3}>
-          Fill out this form, and send us your resume, and we'll be in touch!
+          Fill out this form, send us your resume, and we'll be in touch!
         </Text>
         <Flex direction='column' w='100%'>
           <ApplyForm />

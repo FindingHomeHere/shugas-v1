@@ -97,7 +97,9 @@ export default class ApplyForm extends React.Component {
         data: formData,
       });
 
-      if (res.status === 'ok') {
+      console.log(res)
+
+      if (res.status === 'success') {
         alert('Your application has been sent!');
       }
     } catch (err) {
@@ -145,7 +147,7 @@ export default class ApplyForm extends React.Component {
               value={this.state.position}
               name='position'
             >
-              <option selected value='foh'>
+              <option value='foh'>
                 Front of House
               </option>
               <option value='boh'>Back of House</option>

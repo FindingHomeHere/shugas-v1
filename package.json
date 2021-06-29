@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
+    "cdk": "cdk",
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@aws-cdk/aws-s3": "^1.110.0",
+    "@aws-cdk/core": "^1.110.0",
     "@chakra-ui/icons": "^1.0.13",
     "@chakra-ui/react": "^1.4.2",
     "@chakra-ui/theme-tools": "1.1.2",
@@ -15,6 +18,7 @@
     "@emotion/styled": "11.1.5",
     "@mikecousins/react-pdf": "^5.5.1",
     "@svgr/webpack": "^5.5.0",
+    "aws-sdk": "^2.934.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.4.1",

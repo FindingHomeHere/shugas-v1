@@ -45,7 +45,7 @@ const Dashboard = (props) => {
           position='relative'
           top='8.5rem'
           p={4}
-          right='-9rem'
+          right={{base: '-6.1rem', md:'-9rem'}}
           zIndex={10}
           onClick={() => onLogout()}
           >

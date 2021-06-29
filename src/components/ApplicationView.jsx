@@ -6,6 +6,7 @@ import React from 'react';
 import useSWR from 'swr';
 import { BsTrash, BsEyeFill, BsEye } from 'react-icons/bs';
 import { IconButton } from '@chakra-ui/button';
+import { SimpleGrid } from '@chakra-ui/react';
 
 const ApplicationView = (props) => {
   const { token } = props;
@@ -114,6 +115,8 @@ const ApplicationView = (props) => {
           </Text>
         )}
         {!isValidating && <Heading>New applications</Heading>}
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
+
         {!!apps.data &&
           apps.data.map((el, i) => {
             const firstName = el.name.split(' ')[0];
@@ -149,16 +152,16 @@ const ApplicationView = (props) => {
                       </Text>
                       <Link
                         key={`${el._id}${i}-${el.resume}`}
-                        href={`/uploads/resumes/${el.resume}`}
+                        href={el.resume}
                         passHref
                         >
                         <Text as='a' variant='typewriterNav' target='_blank'>
-                          View {firstName}'s resume!
+                          open {firstName}'s resume!
                         </Text>
                       </Link>
                     </Box>
 
-                    <VStack key={`${el._id}${i}-ButtonGroup`} spacing={1}>
+                    <VStack ml={2} key={`${el._id}${i}-ButtonGroup`} spacing={1}>
                       <IconButton
                         key={`${el._id}${i}-deleteBtn`}
                         aria-label='Delete this Application'
@@ -184,8 +187,10 @@ const ApplicationView = (props) => {
               );
             }
           })}
+          </SimpleGrid>
         {!isValidating && <Heading>Older applications</Heading>}
-        {!isValidating &&
+                <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
+{!isValidating &&
           apps.data.map((el, i) => {
             const firstName = el.name.split(' ')[0];
             if (el.isViewed) {
@@ -233,7 +238,7 @@ const ApplicationView = (props) => {
                       </Link>
                     </Box>
 
-                    <VStack key={`${el._id}${i}-ButtonGroupRead`} spacing={1}>
+                    <VStack ml={2} key={`${el._id}${i}-ButtonGroupRead`} spacing={1}>
                       <IconButton
                         key={`${el._id}${i}-deleteBtnRead`}
                         aria-label='Delete this Application'
@@ -258,6 +263,7 @@ const ApplicationView = (props) => {
               );
             }
           })}
+          </SimpleGrid>
       </VStack>
     </>
   );

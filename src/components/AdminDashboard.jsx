@@ -23,12 +23,12 @@ const AdminDashboard = (user) => {
   `;
 
   return (
-    <Backdrop p={20} w='100vw' px='auto' bg='brandAlpha.700'>
-      <Tabs p={4} isFitted variant='solid-rounded' colorScheme='brandAlpha'>
+    <Backdrop px={{ base: 0, md: 20 }} py={20} w='100vw' px='auto' bg='brandAlpha.700'>
+      <Tabs px={{ base: 0, md: 4 }} py={4} isFitted colorScheme='brand'>
         <Flex>
           <Heading>Hey, {userInfo.name.split(' ')[0]}</Heading>
         </Flex>
-        <TabList mt={12}>
+        <TabList mt={10}>
           <Tab>Applications</Tab>
           <Tab>Update Menu</Tab>
           <Tab>My Info</Tab>

@@ -14,14 +14,20 @@ const Index = () => {
     font-size: 1.1rem;
     text-transfrom: lowercase;
   `;
+  const CoverImg = styled(Box)`
+    filter: blur(1.5px);
+    opacity: 0.97;
+  `;
   return (
     <>
-      <Box
+      <CoverImg
         bgImage='/images/boat.jpg'
         bgSize='cover'
         bgPosition='center'
         width='100%'
+        maxW='1200px'
         px={10}
+        mx='auto'
         mt={4}
         height={{ base: '200px', md: '300px', xl: '400px', '2xl': '600px' }}
       />

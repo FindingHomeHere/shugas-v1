@@ -61,7 +61,7 @@ const PdfComponent = (props) => {
   console.log(doc.data.fileName);
   return (
     <div>
-      <Document file={`/uploads/menus/${doc.data.fileName}`} renderMode='svg'>
+      <Document file={doc.data.fileName} renderMode='svg'>
         <div style={{ marginBottom: '8px' }} />
         <Page pageIndex={0} width={wrapperDivSize} />
         <div style={{ marginBottom: '8px' }} />

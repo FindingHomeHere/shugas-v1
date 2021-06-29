@@ -1,5 +1,6 @@
 import multer from 'multer';
 import nextConnect from 'next-connect';
+import aws from 'aws-sdk';
 
 import Menu from '../../../../../models/menuModel';
 import dbConnect from '../../../../../util/mongodb';
@@ -7,10 +8,7 @@ import dbConnect from '../../../../../util/mongodb';
 const connect = async () => await dbConnect();
 
 const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/uploads/menus',
-    filename: (req, file, cb) => cb(null, `menu-${Date.now()}.pdf`),
-  }),
+  storage: multer.memoryStorage(),
 });
 
 const uploadMenu = upload.single('menu');
@@ -18,20 +16,48 @@ const uploadMenu = upload.single('menu');
 const createMenu = async (req, res) => {
   try {
     connect();
-    const doc = await Menu.create({
-      ...req.body,
-      fileName: req.file.filename,
+    const s3 = new aws.S3({
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY,
+        secretAccessKey: process.env.AWS_SECRET_KEY,
+      },
+      region: process.env.AWS_REGION,
     });
 
+    const params = {
+      Bucket: process.env.BUCKET_NAME,
+      Key: `menus/${Date.now()}-${req.file.originalname}`,
+      Body: req.file.buffer,
+      ACL: 'public-read'
+    }
+    
+    const post = await s3.upload(params, async (err, data) => {
+      try {
+        if (err) {
+          console.log(err)
+        } else if(data) {
+          const fileName = data.Location
+          await Menu.create({
+            ...req.body,
+            fileName,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })
+    
     res.status(201).json({
-      status: 'Success',
+      status: 'success',
       data: {
-        data: doc,
-      },
-    });
+        data: {
+          post
+        },
+      }
+    })
   } catch (err) {
     console.log(err);
-    res.status(400).json({ status: 'Error', data: err });
+    res.status(500).json({ status: 'Menu Upload Error', data: err });
   }
 };
 
