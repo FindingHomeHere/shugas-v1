@@ -25,8 +25,8 @@ const Footer = () => {
   `;
   return (
     <>
-      <Flex bg='brand.800' p={{ base: 4, md: 12 }} h='300px'>
-        <Box p={{ base: '5px', md: '20px' }}>
+      <Flex bg='brand.800' p={{ base: 2, md: 12 }} h='300px'>
+        <Box w={{ base: '40%', md: '15%' }} p={{ base: '5px', md: '20px' }}>
           <FooterLogo />
           <Text>702 S. Cascade Ave.</Text>
           <Text>Colorado Springs, CO 80903</Text>
@@ -34,10 +34,11 @@ const Footer = () => {
         </Box>
         <Box
           lineHeight={1.8}
-          mx={12}
-          paddingLeft='20px'
+          mx={{ base: 'auto', md: 12 }}
+          paddingLeft={{ base: '5px', md: '20px' }}
           borderLeftColor='brand.400'
           borderLeftWidth={1}
+          fontSize={{ base: '0.8 rem', md: '1 rem' }}
         >
           {navItems.map((el, i) => {
             return (

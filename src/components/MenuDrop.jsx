@@ -30,7 +30,7 @@ export default class MenuDrop extends Component {
       let formData = new FormData();
       formData.append('menu', this.state.file);
 
-      await axios({
+      const res = await axios({
         method: 'POST',
         url: `/api/v1/menus`,
         headers: {

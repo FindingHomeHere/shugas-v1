@@ -51,17 +51,20 @@ const LoginForm = () => {
           maxAge: process.env.JWT_COOKIE_EXPIRES_IN * 86400000, // 86400000 ms in a day
         });
         router.push('/admin/dashboard');
-        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
         const errorText = err.message;
+
         if (errorText.includes('401')) {
           setError('incorrect email or password, try again');
         } else {
           setError('Looks like something went wrong, try again soon');
         }
         console.log(`LOGIN ERROR ${errorText}`);
+        setIsLoading(false);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };

@@ -13,14 +13,13 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-
 const uploadResume = upload.single('resume');
 
 const getAllApps = async (req, res, next) => {
   connect();
-  
+
   const doc = await Application.find();
-  
+
   // SEND RESPONSE
   res.status(200).json({
     status: 'success',
@@ -33,7 +32,7 @@ const getAllApps = async (req, res, next) => {
 
 const createApp = async (req, res) => {
   await dbConnect();
-  try {    
+  try {
     const s3 = new aws.S3({
       credentials: {
         accessKeyId: process.env.AWS_PUBLIC_KEY,
@@ -46,15 +45,15 @@ const createApp = async (req, res) => {
       Bucket: process.env.BUCKET_NAME,
       Key: `resumes/${Date.now()}-${req.file.originalname}`,
       Body: req.file.buffer,
-      ACL: 'public-read'
-    }
-    
+      ACL: 'public-read',
+    };
+
     const post = await s3.upload(params, async (err, data) => {
       try {
         if (err) {
-          console.log(err)
-        } else if(data) {
-          const resume = data.Location
+          console.log(err);
+        } else if (data) {
+          const resume = data.Location;
           const doc = await Application.create({
             ...req.body,
             resume,
@@ -63,25 +62,25 @@ const createApp = async (req, res) => {
           const applicationPage = `${req.protocol}://${req.rawHeaders[1]}/jobs`; // TODO: UPDATE FOR PRODUCTION
           const kev = {
             name: 'Kevin Dexter',
-            email: 'isaacj1996@gmail.com', // TODO: UPDATE
+            email: 'shugas@gmail.com', // TODO: UPDATE
           };
-          
+
           await new Email(doc, applicationPage).sendApplicationConfirmation();
           await new Email(kev, adminPortal).sendApplicationNotification();
         }
+
+        res.status(201).json({
+          status: 'success',
+          data: {
+            data: {
+              doc,
+            },
+          },
+        });
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    })
-    
-    res.status(201).json({
-      status: 'success',
-      data: {
-        data: {
-          post
-        },
-      }
-    })
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ status: 'Upload Error', data: err });

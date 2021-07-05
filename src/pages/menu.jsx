@@ -2,7 +2,7 @@ import { Flex, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 import MenuView from '../components/MenuView';
 
@@ -17,12 +17,9 @@ const Menu = () => {
     file = data;
   }
 
-  const BgBox = styled(Flex)`
-    backdrop-filter: blur(20px);
-  `;
   return (
     <Flex align='center' justify='center' minH='80vh' width='100%'>
-      {isValidating && <BgBox align='center' justify='center' bgColor='brandAlpha.700'><Spinner colorScheme='brand' /></BgBox>}
+      {isValidating && <Spinner colorScheme='brand' />}
       {file && !isValidating && <MenuView data={file} />}
     </Flex>
   );

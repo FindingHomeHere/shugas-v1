@@ -62,11 +62,11 @@ const UserInfo = ({ user, token }) => {
             <Input onChange={handlePasswordCurrentChange} type='password' />
           </FormControl>
           <FormControl id='password'>
-            <FormLabel>Password</FormLabel>
+            <FormLabel>New Password</FormLabel>
             <Input onChange={handlePasswordChange} type='password' />
           </FormControl>
           <FormControl id='passwordConfirm'>
-            <FormLabel>Confirm Password</FormLabel>
+            <FormLabel>Confirm New Password</FormLabel>
             <Input onChange={handlePasswordConfrimChange} type='password' />
           </FormControl>
           <Button type='submit' mt={2} colorScheme='brand'>

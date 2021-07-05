@@ -16,7 +16,7 @@ const Jobs = () => {
         bgColor='brandAlpha.700'
         w={{ base: '100vw', sm: '90vw', md: '60vw', lg: '40vw' }}
       >
-        <Heading>Want to join our amazing crew?</Heading>
+        <Heading>Want to join our rockstar crew?</Heading>
         <Text mt={3}>
           Fill out this form, send us your resume, and we'll be in touch!
         </Text>

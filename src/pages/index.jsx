@@ -45,6 +45,7 @@ const Index = () => {
         >
           <Box mb={4} mr={4} minW='250px'>
             <Heading>Shuga's</Heading>
+            <AddressText>Restaurant | Bar</AddressText>
             <AddressText>702 s cascade ave</AddressText>
             <AddressText>colorado springs, co 80903</AddressText>
             <Heading mt={4}>phone</Heading>

@@ -54,8 +54,8 @@ const components = {
         fontFamily: 'john-doe',
         fontWeight: 'bold',
         fontSize: {
-          base: '1rem',
-          sm: '1.2rem',
+          base: '1 rem',
+          sm: '1.2 rem',
         },
         textTransform: 'lowercase',
         _hover: {
