@@ -24,6 +24,12 @@ const Footer = () => {
     fill: #5aaba8;
     padding-bottom: 20px;
   `;
+  const IJ = styled.a`
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  `;
   return (
     <>
       <Flex
@@ -76,8 +82,8 @@ const Footer = () => {
         >
           <Text fontSize='0.8rem'>
             Copyright &copy; 2021 Shuga's Restaurant, Designed and Built by{' '}
-            <Link href='https://www.isaacjohnson.dev' target='_blank' passHref>
-              Isaac Johnson
+            <Link href='https://www.isaacjohnson.dev' passHref>
+              <IJ target='_blank'>Isaac Johnson</IJ>
             </Link>
           </Text>
         </Flex>
