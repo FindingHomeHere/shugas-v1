@@ -52,7 +52,7 @@ const createUser = catchAsync(async (req, res, next) => {
     return next(new AppError('Some Data is missing... try again!', 401));
   }
 
-  const url = `${req.protocol}://localhost:3000/admin`; // TODO: FIX FOR PRODUCTION
+  const url = `${req.protocol}://${req.headers.host}/admin`; // TODO: FIX FOR PRODUCTION
   await new Email(newUser, url).sendTeamWelcome();
   createSendToken(newUser, 201, res);
 });
@@ -177,9 +177,7 @@ const forgotPassword = catchAsync(async (req, res, next) => {
   // 3) Send it to user's email
 
   try {
-    const resetURL = `${req.protocol}://${req.get(
-      'host'
-    )}/api/v1/users/resetPassword/${resetToken}`;
+    const resetURL = `${req.protocol}://${req.headers.host}/admin/resetPassword/${resetToken}`;
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({

@@ -29,7 +29,8 @@ class Email {
     });
 
     const mailOptions = {
-      from: `Shugas Restaurant <${process.env.EMAIL_FROM}>`,
+      // from: `Shugas Restaurant <${process.env.EMAIL_FROM}>`,
+      from: 'isaac.johnson.2493@gmail.com',
       to: this.to,
       subject,
       html,

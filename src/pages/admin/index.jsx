@@ -10,7 +10,7 @@ const FormContainer = styled(Box)`
 // props: any
 const Login = () => {
   return (
-    <Flex py={4} align='center' justify='center' minH='80vh'>
+    <Flex py={4} align='center' justify='center' minH='60vh'>
       <FormContainer
         w={{ base: '100%', sm: '650px' }}
         p={12}

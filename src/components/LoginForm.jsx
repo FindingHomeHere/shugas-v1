@@ -9,9 +9,12 @@ import {
   Button,
   VStack,
   Text,
+  Spacer,
+  Flex,
 } from '@chakra-ui/react';
 import cookie from 'cookie-cutter';
 import axios from 'axios';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -95,15 +98,19 @@ const LoginForm = () => {
             />
           </FormControl>
           {!!error && <Text color='red.300'>{error}</Text>}
-          <Button
-            colorScheme='brand'
-            isLoading={isLoading}
-            spinner={<Spinner />}
-            mt={2}
-            type='submit'
-          >
-            log in
-          </Button>
+          <Flex direction='row' align='center'>
+            <Button
+              colorScheme='brand'
+              isLoading={isLoading}
+              spinner={<Spinner />}
+              mt={2}
+              type='submit'
+            >
+              log in
+            </Button>
+            <Spacer />
+            <Link href='/admin/resetPassword'>Forgot Password?</Link>
+          </Flex>
         </form>
       </VStack>
     </>
