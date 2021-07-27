@@ -15,6 +15,7 @@ const navItems = [
     text: 'Order Online',
     isExternal: true,
   },
+  { link: '/jobs', text: 'Join the Crew', isExternal: false },
 ];
 
 const MobileNav = () => {

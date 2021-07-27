@@ -58,11 +58,11 @@ const createApp = async (req, res) => {
             ...req.body,
             resume,
           });
-          const adminPortal = `${req.protocol}://${req.rawHeaders[1]}/admin`; //TODO: UPDATE FOR PRODUCTION
-          const applicationPage = `${req.protocol}://${req.rawHeaders[1]}/jobs`; // TODO: UPDATE FOR PRODUCTION
+          const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
+          const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
           const kev = {
             name: 'Kevin Dexter',
-            email: 'shugas@gmail.com', // TODO: UPDATE
+            email: 'kevinjdexter@icloud.com',
           };
 
           await new Email(doc, applicationPage).sendApplicationConfirmation();
