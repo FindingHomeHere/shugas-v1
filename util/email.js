@@ -29,7 +29,7 @@ class Email {
     });
 
     const mailOptions = {
-      from: `Shugas Restaurant <${process.env.EMAIL_FROM}>`,
+      from: `Shugas <${process.env.EMAIL_FROM}>`,
       to: this.to,
       subject,
       html,

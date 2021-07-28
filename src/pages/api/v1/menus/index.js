@@ -13,7 +13,7 @@ const upload = multer({
 
 const uploadMenu = upload.single('menu');
 
-const createMenu = async (req, res) => {
+const updateMenu = async (req, res) => {
   try {
     connect();
     const s3 = new aws.S3({
@@ -26,7 +26,7 @@ const createMenu = async (req, res) => {
 
     const params = {
       Bucket: process.env.BUCKET_NAME,
-      Key: `menus/${Date.now()}-${req.file.originalname}`,
+      Key: `menus/menu.pdf`,
       Body: req.file.buffer,
       ACL: 'public-read',
     };
@@ -34,10 +34,12 @@ const createMenu = async (req, res) => {
     const post = s3.upload(params, async (err, data) => {
       try {
         const fileName = data.Location;
-        const doc = await Menu.create({
-          ...req.body,
-          fileName: fileName,
-        });
+        const doc = await Menu.findByIdAndUpdate(
+          { _id: process.env.MENU_ID },
+          {
+            fileName: fileName,
+          }
+        );
 
         res.status(201).json({
           status: 'success',
@@ -67,7 +69,7 @@ const handler = nextConnect({
   onError,
 })
   .use(uploadMenu)
-  .post(createMenu);
+  .patch(updateMenu);
 
 export default handler;
 
