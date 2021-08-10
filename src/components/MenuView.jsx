@@ -69,6 +69,8 @@ const PdfComponent = (props) => {
         <div style={{ marginBottom: '8px' }} />
         <Page pageIndex={2} width={wrapperDivSize} />
         <div style={{ marginBottom: '8px' }} />
+        <Page pageIndex={3} width={wrapperDivSize} />
+        <div style={{ marginBottom: '8px' }} />
       </Document>
     </div>
   );
