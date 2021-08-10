@@ -57,20 +57,29 @@ class MenuView extends PureComponent {
 }
 
 const PdfComponent = (props) => {
+  const [numPages, setNumPages] = React.useState([]);
   const { doc, wrapperDivSize } = props;
   console.log(doc.data.fileName);
   return (
     <div>
-      <Document file={doc.data.fileName} renderMode='svg'>
-        <div style={{ marginBottom: '8px' }} />
-        <Page pageIndex={0} width={wrapperDivSize} />
-        <div style={{ marginBottom: '8px' }} />
-        <Page pageIndex={1} width={wrapperDivSize} />
-        <div style={{ marginBottom: '8px' }} />
-        <Page pageIndex={2} width={wrapperDivSize} />
-        <div style={{ marginBottom: '8px' }} />
-        <Page pageIndex={3} width={wrapperDivSize} />
-        <div style={{ marginBottom: '8px' }} />
+      <Document
+        file={doc.data.fileName}
+        onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+        renderMode='svg'
+      >
+        {Array.apply(null, Array(numPages))
+          .map((x, i) => i + 1)
+          .map((page) => (
+            <div
+              key={page}
+              style={{
+                marginBottom: '8px',
+                marginTop: page === 1 ? '8px' : '0',
+              }}
+            >
+              <Page pageNumber={page} width={wrapperDivSize} />
+            </div>
+          ))}
       </Document>
     </div>
   );
