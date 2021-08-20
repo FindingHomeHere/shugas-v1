@@ -48,12 +48,17 @@ const Index = () => {
             <AddressText>Restaurant | Bar</AddressText>
             <AddressText>702 s cascade ave</AddressText>
             <AddressText>colorado springs, co 80903</AddressText>
-            <Heading mt={4}>phone</Heading>
+            <Heading mt={4}>contact</Heading>
             <Link href='tel:719-328-1412'>
               <Text variant='typewriterNav' cursor='pointer'>
                 719-328-1412
               </Text>
             </Link>
+            {/* <Link href='mailto:hello@shugas.com'>
+              <Text variant='typewriterNav' cursor='pointer'>
+                hello@shugas.com
+              </Text>
+            </Link> */}
             <Heading mt={4}>hours</Heading>
             <Text style={{ fontSize: '0.8rem' }} variant='typewriter'>
               mon thru fri:

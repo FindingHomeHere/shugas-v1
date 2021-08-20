@@ -4,8 +4,7 @@ import validator from 'validator';
 const applicationSchema = new mongoose.Schema({
   position: {
     type: String,
-    enum: ['foh', 'boh', 'prep'],
-    required: true,
+    default: 'foh',
   },
   name: {
     type: String,

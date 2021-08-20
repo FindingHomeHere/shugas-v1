@@ -43,12 +43,13 @@ const createApp = async (req, res) => {
 
     const params = {
       Bucket: process.env.BUCKET_NAME,
-      Key: `resumes/${Date.now()}-${req.file.originalname}`,
+      Key: `resumes/${req.file.originalname}`,
       Body: req.file.buffer,
       ACL: 'public-read',
     };
+    // console.log('body', req.body);
 
-    const post = await s3.upload(params, async (err, data) => {
+    await s3.upload(params, async (err, data) => {
       try {
         if (err) {
           console.log(err);
@@ -58,7 +59,7 @@ const createApp = async (req, res) => {
             ...req.body,
             resume,
           });
-          const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
+          // const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
           const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
           const kev = {
             name: 'Kevin Dexter',
@@ -71,11 +72,7 @@ const createApp = async (req, res) => {
 
         res.status(201).json({
           status: 'success',
-          data: {
-            data: {
-              doc,
-            },
-          },
+          msg: 'Your document has been created successfully',
         });
       } catch (err) {
         console.log(err);

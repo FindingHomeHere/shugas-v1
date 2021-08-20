@@ -145,12 +145,15 @@ const ApplicationView = (props) => {
                             <strong>Desired Position: </strong>
                             {el.position}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question1}-1`}>
                             {el.question1}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question2}-2`}>
                             {el.question2}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question3}-3`}>
                             {el.question3}
                           </Text>
@@ -230,12 +233,15 @@ const ApplicationView = (props) => {
                             <strong>Desired Position: </strong>
                             {el.position}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question1}1-viewed`}>
                             {el.question1}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question2}2-viewed`}>
                             {el.question2}
                           </Text>
+                          <strong>-- </strong>
                           <Text key={`${el._id}${i}-${el.question3}3-viewed`}>
                             {el.question3}
                           </Text>
