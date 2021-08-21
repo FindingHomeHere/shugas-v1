@@ -59,7 +59,7 @@ const createApp = async (req, res) => {
             ...req.body,
             resume,
           });
-          // const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
+          const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
           const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
           const kev = {
             name: 'Kevin Dexter',
