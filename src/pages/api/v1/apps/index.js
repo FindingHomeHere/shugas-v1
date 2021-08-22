@@ -43,11 +43,10 @@ const createApp = async (req, res) => {
 
     const params = {
       Bucket: process.env.BUCKET_NAME,
-      Key: `resumes/${req.file.originalname}`,
+      Key: `resumes/${req.body.name}-${req.body.email}.pdf`,
       Body: req.file.buffer,
       ACL: 'public-read',
     };
-    // console.log('body', req.body);
 
     await s3.upload(params, async (err, data) => {
       try {
@@ -59,7 +58,7 @@ const createApp = async (req, res) => {
             ...req.body,
             resume,
           });
-          // const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
+          const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
           const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
           const kev = {
             name: 'Kevin Dexter',
