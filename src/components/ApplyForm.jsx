@@ -42,7 +42,6 @@ export default function ApplyForm() {
   const onChange = (e) => {
     const { name, value } = e.target;
     setInfo({ ...info, [name]: value });
-    console.log(info);
   };
 
   const onResumeChange = (e) => {

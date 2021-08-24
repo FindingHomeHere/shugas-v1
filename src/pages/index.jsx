@@ -54,11 +54,11 @@ const Index = () => {
                 719-328-1412
               </Text>
             </Link>
-            {/* <Link href='mailto:hello@shugas.com'>
+            <Link href='mailto:hello@shugas.com'>
               <Text variant='typewriterNav' cursor='pointer'>
                 hello@shugas.com
               </Text>
-            </Link> */}
+            </Link>
             <Heading mt={4}>hours</Heading>
             <Text style={{ fontSize: '0.8rem' }} variant='typewriter'>
               mon thru fri:
