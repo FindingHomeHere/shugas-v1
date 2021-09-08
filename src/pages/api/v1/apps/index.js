@@ -58,15 +58,15 @@ const createApp = async (req, res) => {
             ...req.body,
             resume,
           });
-          const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
-          // const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
-          const kev = {
-            name: 'Kevin Dexter',
-            email: 'kevinjdexter@icloud.com',
-          };
+          // const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
+          // // const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
+          // const kev = {
+          //   name: 'Kevin Dexter',
+          //   email: 'kevinjdexter@icloud.com',
+          // };
 
-          // await new Email(doc, applicationPage).sendApplicationConfirmation();
-          await new Email(kev, adminPortal).sendApplicationNotification();
+          // // await new Email(doc, applicationPage).sendApplicationConfirmation();
+          // await new Email(kev, adminPortal).sendApplicationNotification();
         }
 
         res.status(201).json({
