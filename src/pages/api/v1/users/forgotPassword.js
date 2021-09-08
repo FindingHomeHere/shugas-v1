@@ -7,7 +7,6 @@ import catchAsync from '../../../../../util/catchAsync';
 import User from '../../../../../models/userModel';
 import dbConnect from '../../../../../util/mongodb';
 import AppError from '../../../../../util/appError';
-import Email from '../../../../../util/email';
 
 const connect = async () => await dbConnect();
 
@@ -59,7 +58,7 @@ const forgotPassword = catchAsync(async (req, res, next) => {
 
   try {
     const resetURL = `${protocol}://${req.headers.host}/admin/resetPassword/${resetToken}`;
-    await new Email(user, resetURL).sendPasswordReset();
+    // await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
       status: 'success',
