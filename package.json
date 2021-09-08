@@ -17,6 +17,7 @@
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "@mikecousins/react-pdf": "^5.5.1",
+    "@sendgrid/mail": "^7.4.6",
     "@svgr/webpack": "^5.5.0",
     "aws-sdk": "^2.934.0",
     "axios": "^0.21.1",

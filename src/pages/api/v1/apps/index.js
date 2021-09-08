@@ -5,7 +5,7 @@ import aws from 'aws-sdk';
 import Application from '../../../../../models/applicationModel';
 import AppError from '../../../../../util/appError';
 import dbConnect from '../../../../../util/mongodb';
-import Email from '../../../../../util/email';
+import sendEmail from '../../../../../util/Sendgrid';
 
 const connect = async () => await dbConnect();
 
@@ -54,19 +54,12 @@ const createApp = async (req, res) => {
           console.log(err);
         } else if (data) {
           const resume = data.Location;
-          const doc = await Application.create({
+          await Application.create({
             ...req.body,
             resume,
           });
-          // const adminPortal = `${req.protocol}://${req.headers.host}/admin`;
-          // // const applicationPage = `${req.protocol}://${req.headers.host}/jobs`;
-          // const kev = {
-          //   name: 'Kevin Dexter',
-          //   email: 'kevinjdexter@icloud.com',
-          // };
 
-          // // await new Email(doc, applicationPage).sendApplicationConfirmation();
-          // await new Email(kev, adminPortal).sendApplicationNotification();
+          await sendEmail({ name: req.body.name, email: req.body.email });
         }
 
         res.status(201).json({
