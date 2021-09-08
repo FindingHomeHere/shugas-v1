@@ -22,11 +22,14 @@ class Email {
   }
 
   async send(template, subject) {
-    const html = pug.renderFile(`util/templates/${template}.pug`, {
-      firstName: this.firstName,
-      url: this.url,
-      subject,
-    });
+    const html = pug.renderFile(
+      `src/pages/api/v1/apps/templates/${template}.pug`,
+      {
+        firstName: this.firstName,
+        url: this.url,
+        subject,
+      }
+    );
 
     const mailOptions = {
       from: `Shugas <${process.env.EMAIL_FROM}>`,
