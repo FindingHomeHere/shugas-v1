@@ -2,6 +2,7 @@ import nextConnect from 'next-connect';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 import crypto from 'crypto';
+import sgMail from '@sendgrid/mail';
 
 import catchAsync from '../../../../../util/catchAsync';
 import User from '../../../../../models/userModel';
@@ -57,8 +58,28 @@ const forgotPassword = catchAsync(async (req, res, next) => {
   const protocol = req.protocol ? req.protocol : 'http';
 
   try {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const resetURL = `${protocol}://${req.headers.host}/admin/resetPassword/${resetToken}`;
-    // await new Email(user, resetURL).sendPasswordReset();
+
+    const email = {
+      to: user.email,
+      from: process.env.EMAIL_FROM,
+      subject: 'Urgent!! Password reset link will expire in 10 minutes!',
+      templateId: process.env.EMAIL_PASSWORD_RESET,
+      dynamicTemplateData: {
+        user,
+        link: resetURL,
+      },
+    };
+
+    await sgMail
+      .send(email)
+      .then(() => {
+        console.log('Reset link sent');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     res.status(200).json({
       status: 'success',
