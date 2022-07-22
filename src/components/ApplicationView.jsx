@@ -104,7 +104,6 @@ const ApplicationView = (props) => {
         {!isValidating &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];
-            console.log(el);
             if (!el.isViewed) {
               return (
                 <>
