@@ -4,6 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 import useSWR from 'swr';
+import moment from 'moment';
 import { BsTrash, BsEyeFill, BsEye } from 'react-icons/bs';
 import { IconButton } from '@chakra-ui/button';
 
@@ -103,6 +104,7 @@ const ApplicationView = (props) => {
         {!isValidating &&
           apps.data.map((el) => {
             const firstName = el.name.split(' ')[0];
+            console.log(el);
             if (!el.isViewed) {
               return (
                 <>
@@ -119,6 +121,11 @@ const ApplicationView = (props) => {
                       <Text>{el.email}</Text>
                       <Text>{el.phone}</Text>
                       <Text>
+                        {moment(el.created_at).format(
+                          'MMMM Do YYYY, h:mm:ss a'
+                        )}
+                      </Text>
+                      <Text>
                         <strong>Desired Position: </strong>
                         {el.position}
                       </Text>
@@ -128,26 +135,6 @@ const ApplicationView = (props) => {
                         </Text>
                       </Link>
                     </Box>
-
-                    {/* <VStack key={el._id} spacing={1}>
-                      <IconButton
-                        aria-label='Delete this Application'
-                        tooltip='Delete this Application'
-                        name='delete'
-                        colorScheme='red'
-                        value={el._id}
-                        onClick={handleDelete}
-                        icon={<BsTrash />}
-                      />
-                      <IconButton
-                        aria-label='Mark as Read/unread'
-                        name='isViewed'
-                        colorScheme='brand'
-                        value={el._id}
-                        onClick={!el.isViewed ? handleRead : handleUnread}
-                        icon={el.isViewed ? <BsEyeFill /> : <BsEye />}
-                      />
-                    </VStack> */}
                   </Flex>
                 </>
               );
@@ -178,6 +165,11 @@ const ApplicationView = (props) => {
                       <Heading>{el.name}</Heading>
                       <Text>{el.email}</Text>
                       <Text>{el.phone}</Text>
+                      <Text>
+                        {moment(el.created_at).format(
+                          'MMMM Do YYYY, h:mm:ss a'
+                        )}
+                      </Text>
                       <Text>
                         <strong>Desired Position: </strong>
                         {el.position}

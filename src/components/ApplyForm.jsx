@@ -146,9 +146,14 @@ export default class ApplyForm extends React.Component {
               value={this.state.position}
               name='position'
             >
-              <option value='foh'>Front of House</option>
-              <option value='boh'>Back of House</option>
-              <option value='prep'>Prep</option>
+              <optgroup label='Front of House' />
+              <option value='bartender'>Bartender</option>
+              <option value='server'>Server</option>
+              <option value='support'>Support</option>
+              <optgroup label='Back of House' />
+              <option value='dishwasher'>Dishwasher</option>
+              <option value='line cook'>Line Cook</option>
+              <option value='prep cook'>Prep Cook</option>
             </Select>
           </FormControl>
           <FormControl isRequired>
