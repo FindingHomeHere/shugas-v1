@@ -1,11 +1,13 @@
 import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/layout';
 import React from 'react';
 import { BsTrash, BsEyeFill, BsEye } from 'react-icons/bs';
+import useRouter from 'next/router';
 import { IconButton } from '@chakra-ui/button';
 import Link from 'next/link';
 import axios from 'axios';
 
 const ApplyCard = ({ user, i, token, isViewed }) => {
+  const router = useRouter();
   const firstName = user.name.split(' ')[0];
 
   console.log(user);
@@ -30,7 +32,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         });
         alert('Successfully deleted application');
-        location.reload();
+        router.reload();
       } else {
         return null;
       }
@@ -55,7 +57,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         },
       });
-      location.reload();
+      router.reload();
     } catch (err) {
       console.error(err);
     }
@@ -78,7 +80,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         },
       });
-      location.reload();
+      router.reload();
     } catch (err) {
       console.error(err);
     }
@@ -95,7 +97,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
     >
       <Box key={`${user._id}${i}-container`} w='100%'>
         <Heading key={`${user._id}${i}-${user.firstName}`}>{user.name}</Heading>
-        {/* <Text>{date.toLocaleString('en-US')}</Text> */}
+        <Text>{date.toLocaleString('en-US')}</Text>
         <Text key={`${user._id}${i}-${user.email}`}>{user.email}</Text>
         <Text key={`${user._id}${i}-${user.phone}`}>{user.phone}</Text>
         <Text key={`${user._id}${i}-${user.position}`}>

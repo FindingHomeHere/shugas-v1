@@ -23,7 +23,7 @@ const AdminDashboard = (user) => {
   `;
 
   return (
-    <Backdrop px={{ base: 0, md: 20 }} py={20} w='100vw' px='auto' bg='brandAlpha.700'>
+    <Backdrop py={20} w='100vw' px='auto' bg='brandAlpha.700'>
       <Tabs px={{ base: 0, md: 4 }} py={4} isFitted colorScheme='brand'>
         <Flex>
           <Heading>Hey, {userInfo.name.split(' ')[0]}</Heading>

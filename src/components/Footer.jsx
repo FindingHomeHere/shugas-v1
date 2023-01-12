@@ -82,8 +82,8 @@ const Footer = () => {
         >
           <Text fontSize='0.8rem'>
             Copyright &copy; 2021 Shuga's Restaurant, Designed and Built by{' '}
-            <Link href='https://www.isaacjohnson.dev' passHref>
-              <IJ target='_blank'>Isaac Johnson</IJ>
+            <Link href='https://www.isaacjohnson.dev' target='_blank' passHref>
+              <Text>Isaac Johnson</Text>
             </Link>
           </Text>
         </Flex>

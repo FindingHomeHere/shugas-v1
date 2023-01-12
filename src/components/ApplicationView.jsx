@@ -42,13 +42,20 @@ const ApplicationView = (props) => {
           {!isValidating && <Heading>New applications</Heading>}
           <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
             {!!apps.data &&
-              apps.data.map((el, i) => {
-                if (!el.isViewed) {
-                  return (
-                    <ApplyCard user={el} i={i} token={token} isViewed={false} />
-                  );
-                }
-              })}
+              apps.data
+                .sort((a, b) => a.created_at < b.created_at)
+                .map((el, i) => {
+                  if (!el.isViewed) {
+                    return (
+                      <ApplyCard
+                        user={el}
+                        i={i}
+                        token={token}
+                        isViewed={false}
+                      />
+                    );
+                  }
+                })}
           </SimpleGrid>
           {!isValidating && <Heading>Older applications</Heading>}
           <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>

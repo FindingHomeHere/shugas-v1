@@ -3,27 +3,26 @@ import Link from 'next/link';
 import React from 'react';
 
 const NavLink = (props) => {
-  return (
+  return props.isExternal ? (
     <>
-      {props.isExternal ? (
-        <>
-          <Link href={props.link} passHref>
-            <a target='_blank' rel='noopener noreferrer'>
-              <Text cursor='pointer' variant='typewriterNav'>
-                {props.text}
-              </Text>
-            </a>
-          </Link>
-        </>
-      ) : (
-        <>
-          <Link href={props.link} passHref>
-            <Text cursor='pointer' variant='typewriterNav'>
-              {props.text}
-            </Text>
-          </Link>
-        </>
-      )}
+      <Link
+        href={props.link}
+        target='_blank'
+        rel='noopener noreferrer'
+        passHref
+      >
+        <Text cursor='pointer' variant='typewriterNav'>
+          {props.text}
+        </Text>
+      </Link>
+    </>
+  ) : (
+    <>
+      <Link href={props.link} passHref>
+        <Text cursor='pointer' variant='typewriterNav'>
+          {props.text}
+        </Text>
+      </Link>
     </>
   );
 };
