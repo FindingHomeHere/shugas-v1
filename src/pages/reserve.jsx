@@ -25,7 +25,7 @@ const Reservations = () => {
           </a>{' '}
         </iframe>
         <Image
-          src='/images/21st.jpg'
+          src='/images/twentyone.jpg'
           alt="Shuga's 21st anniversary"
           width={900}
           height={440}
