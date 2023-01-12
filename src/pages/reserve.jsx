@@ -1,4 +1,4 @@
-import { Flex, Stack } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
 import Image from 'next/image';
 import React from 'react';
 
@@ -14,7 +14,7 @@ const Reservations = () => {
       >
         <iframe
           id='yelp-reservations-widget'
-          width='100%'
+          width='250'
           height='440'
           src='//www.yelp.com/reservations/shugas-colorado-springs/widget?orientation=vertical&color-scheme=light'
           title='Make a reservation'
@@ -24,11 +24,13 @@ const Reservations = () => {
             Reserve at Shuga's on Yelp
           </a>{' '}
         </iframe>
-        <Image
-          src='/images/21st.jpg'
-          alt="Shuga's 21st anniversary"
-          width={880}
-          height={440}
+        <Box
+          bgImage='/images/21st.jpg'
+          bgSize='contain'
+          bgRepeat='no-repeat'
+          bgPosition='center'
+          width='880px'
+          height='440px'
         />
       </Stack>
     </Flex>
