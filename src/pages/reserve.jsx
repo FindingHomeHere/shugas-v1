@@ -1,5 +1,5 @@
-import { Flex, Stack, Image } from '@chakra-ui/react';
-// import Image from 'next/image';
+import { Flex, Stack } from '@chakra-ui/react';
+import Image from 'next/image';
 import React from 'react';
 
 const Reservations = () => {
