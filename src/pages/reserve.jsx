@@ -1,5 +1,5 @@
-import { Flex, Stack } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Flex, Stack, Image } from '@chakra-ui/react';
+// import Image from 'next/image';
 import React from 'react';
 
 const Reservations = () => {
@@ -8,12 +8,12 @@ const Reservations = () => {
       <Stack
         direction={{ base: 'column', md: 'row' }}
         p={{ base: 2, md: 'sm', lg: 'lg' }}
+        my={{ base: 4, md: 'lg' }}
         justify='center'
         h='contain'
       >
         <iframe
           id='yelp-reservations-widget'
-          frameborder='0'
           width='100%'
           height='440'
           src='//www.yelp.com/reservations/shugas-colorado-springs/widget?orientation=vertical&color-scheme=light'

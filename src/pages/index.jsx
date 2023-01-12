@@ -12,7 +12,6 @@ const Index = () => {
   `;
   const AddressText = styled(Text)`
     font-size: 1.1rem;
-    text-transfrom: lowercase;
   `;
   const CoverImg = styled(Box)`
     filter: blur(1.5px);
