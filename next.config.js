@@ -6,7 +6,4 @@ module.exports = {
     });
     return config;
   },
-  images: {
-    disableStaticImages: false,
-  },
 };
