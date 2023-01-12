@@ -7,6 +7,6 @@ module.exports = {
     return config;
   },
   images: {
-    disableStaticImages: true,
+    disableStaticImages: false,
   },
 };

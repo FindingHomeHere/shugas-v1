@@ -27,7 +27,7 @@ const Reservations = () => {
         <Image
           src='/images/21st.jpg'
           alt="Shuga's 21st anniversary"
-          width={880}
+          width={900}
           height={440}
         />
       </Stack>
