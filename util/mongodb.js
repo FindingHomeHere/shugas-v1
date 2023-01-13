@@ -29,6 +29,7 @@ async function dbConnect() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       bufferCommands: true,
+      strictQuery: false,
     };
 
     cached.promise = await mongoose

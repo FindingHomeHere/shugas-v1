@@ -1,5 +1,5 @@
 import { Flex, Spinner, Heading } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
 
@@ -9,9 +9,10 @@ const Menu = () => {
   const [file, setFile] = useState(null);
   const fetcher = (url) => axios.get(url).then((res) => res.data.data);
   const { data, isValidating } = useSWR('/api/v1/menus/current', fetcher);
-  if (!!data) {
-    setFile(data);
-  }
+
+  useEffect(() => {
+    if (data) setFile(data);
+  }, [data]);
 
   return (
     <Flex align='center' justify='center' minH='80vh' width='100%'>
@@ -29,7 +30,7 @@ const Menu = () => {
         </Flex>
       )}
 
-      {file && !isValidating && <MenuView data={file} />}
+      {file !== null && !isValidating && <MenuView data={file} />}
     </Flex>
   );
 };
