@@ -2,13 +2,13 @@ import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/layout';
 import React from 'react';
 import { BsTrash, BsEyeFill, BsEye } from 'react-icons/bs';
 import { IconButton } from '@chakra-ui/button';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
 
-const ApplyCard = ({ user, i, token, isViewed }) => {
+const ApplyCard = ({ user, token }) => {
   const firstName = user.name.split(' ')[0];
-
-  console.log(user);
+  const router = useRouter();
 
   const handleDelete = async (e) => {
     const id = e.target.closest('button').value;
@@ -30,7 +30,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         });
         alert('Successfully deleted application');
-        location.reload();
+        router.reload();
       } else {
         return null;
       }
@@ -55,7 +55,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         },
       });
-      location.reload();
+      router.reload();
     } catch (err) {
       console.error(err);
     }
@@ -78,7 +78,7 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           },
         },
       });
-      location.reload();
+      router.reload();
     } catch (err) {
       console.error(err);
     }
@@ -86,41 +86,36 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
 
   return (
     <Flex
-      key={isViewed ? `${user._id}${i}-viewed` : `${user._id}${i}`}
       w='100%'
       p={4}
       borderWidth={1}
       borderColor='brandAlpha.100'
       borderRadius='md'
     >
-      <Box key={`${user._id}${i}-container`} w='100%'>
-        <Heading key={`${user._id}${i}-${user.firstName}`}>{user.name}</Heading>
-        <Text key={`${user._id}${i}-${user.email}`}>{user.email}</Text>
-        <Text key={`${user._id}${i}-${user.phone}`}>{user.phone}</Text>
-        <Text key={`${user._id}${i}-${user.position}`}>
+      <Box w='100%'>
+        <Heading>{user.name}</Heading>
+        <Text>
+          Applied on: {new Date(user.created_at).toLocaleDateString('en-US')}
+        </Text>
+        <Text>{user.email}</Text>
+        <Text>{user.phone}</Text>
+        <Text>
           <strong>Desired Position: </strong>
           {user.position}
         </Text>
         <strong>-- </strong>
-        <Text key={`${user._id}${i}-${user.question1}1`}>{user.question1}</Text>
+        <Text>{user.question1}</Text>
         <strong>-- </strong>
-        <Text key={`${user._id}${i}-${user.question2}2`}>{user.question2}</Text>
+        <Text>{user.question2}</Text>
         <strong>-- </strong>
-        <Text key={`${user._id}${i}-${user.question3}3`}>{user.question3}</Text>
-        <Link
-          key={`${user._id}${i}-${user.resume}`}
-          href={user.resume}
-          passHref
-        >
-          <Text as='a' variant='typewriterNav' target='_blank'>
-            View {firstName}'s resume!
-          </Text>
+        <Text>{user.question3}</Text>
+        <Link href={user.resume} target='_blank' passHref>
+          <Text variant='typewriterNav'>View {firstName}'s resume!</Text>
         </Link>
       </Box>
 
-      <VStack ml={2} key={`${user._id}${i}-ButtonGroupRead`} spacing={1}>
+      <VStack ml={2} spacing={1}>
         <IconButton
-          key={`${user._id}${i}-deleteBtnRead`}
           aria-label='Delete this Application'
           name='delete'
           colorScheme='red'
@@ -129,7 +124,6 @@ const ApplyCard = ({ user, i, token, isViewed }) => {
           icon={<BsTrash />}
         />
         <IconButton
-          key={`${user._id}${i}-unreadBtn`}
           aria-label='Mark as Read/unread'
           name='isViewed'
           colorScheme='brand'

@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import throttle from 'lodash.throttle';
+import { Box } from '@chakra-ui/react';
 
 class MenuView extends PureComponent {
   constructor(props) {
@@ -59,18 +62,16 @@ class MenuView extends PureComponent {
 const PdfComponent = (props) => {
   const [numPages, setNumPages] = React.useState([]);
   const { doc, wrapperDivSize } = props;
-  console.log(doc.data.fileName);
   return (
-    <div>
+    <>
       <Document
         file={doc.data.fileName}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-        renderMode='svg'
       >
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page) => (
-            <div
+            <Box
               key={page}
               style={{
                 marginBottom: '8px',
@@ -78,10 +79,10 @@ const PdfComponent = (props) => {
               }}
             >
               <Page pageNumber={page} width={wrapperDivSize} />
-            </div>
+            </Box>
           ))}
       </Document>
-    </div>
+    </>
   );
 };
 

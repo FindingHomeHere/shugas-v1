@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/layout';
+import { Heading, Text, VStack } from '@chakra-ui/layout';
 import { Spinner } from '@chakra-ui/spinner';
 import axios from 'axios';
 import React from 'react';
@@ -49,7 +49,7 @@ const ApplicationView = (props) => {
                     return (
                       <ApplyCard
                         user={el}
-                        i={i}
+                        key={i}
                         token={token}
                         isViewed={false}
                       />
@@ -63,7 +63,12 @@ const ApplicationView = (props) => {
               apps.data.map((el, i) => {
                 if (el.isViewed) {
                   return (
-                    <ApplyCard user={el} i={i} token={token} isViewed={true} />
+                    <ApplyCard
+                      user={el}
+                      key={i}
+                      token={token}
+                      isViewed={true}
+                    />
                   );
                 }
               })}
