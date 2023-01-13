@@ -14,6 +14,7 @@ class MenuView extends PureComponent {
   }
 
   componentDidMount() {
+    console.log(pdfjs.version);
     this.setDivSize();
     window.addEventListener('resize', this.throttledSetDivSize);
   }
@@ -69,7 +70,7 @@ const PdfComponent = (props) => {
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
       >
         {Array.apply(null, Array(numPages))
-          .map((x, i) => i + 1)
+          .map((_, i) => i + 1)
           .map((page) => (
             <Box
               key={page}

@@ -7,7 +7,7 @@ if (!MONGODB_URI) {
     'Please define the MONGODB_URI environment variable inside .env.local'
   );
 }
-
+mongoose.set('strictQuery', false);
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
@@ -29,7 +29,6 @@ async function dbConnect() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       bufferCommands: true,
-      strictQuery: false,
     };
 
     cached.promise = await mongoose
