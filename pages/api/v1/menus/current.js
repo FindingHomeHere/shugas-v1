@@ -1,5 +1,6 @@
-import Menu from '../../../../../models/menuModel';
-import dbConnect from '../../../../../util/mongodb';
+'use-strict';
+import Menu from '../../../../models/menuModel';
+import dbConnect from '../../../../util/mongodb';
 
 export default async function helper(req, res) {
   const { method } = req;

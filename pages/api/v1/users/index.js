@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 
-import User from '../../../../../models/userModel';
-import dbConnect from '../../../../../util/mongodb';
+import User from '../../../../models/userModel';
+import dbConnect from '../../../../util/mongodb';
 
 const createUser = async (req, res) => {
   try {

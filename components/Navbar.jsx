@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
-import Logo from '../../public/images/shugasTitleLogoTeal.svg';
+import Logo from '../public/images/shugasTitleLogoTeal.svg';
 import MobileNav from './MobileNav';
 
 const Navbar = () => {

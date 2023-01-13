@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import HomeMap from '../components/HomeMap';
-import SpyGirl from '../../public/images/spyGirl.svg';
+import SpyGirl from '../public/images/spyGirl.svg';
 
 const Index = () => {
   const AddressBox = styled(Flex)`

@@ -3,9 +3,9 @@ import promisify from 'util.promisify';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 
-import User from '../../../../../models/userModel';
-import dbConnect from '../../../../../util/mongodb';
-import AppError from '../../../../../util/appError';
+import User from '../../../../models/userModel';
+import dbConnect from '../../../../util/mongodb';
+import AppError from '../../../../util/appError';
 
 const connect = async () => await dbConnect();
 

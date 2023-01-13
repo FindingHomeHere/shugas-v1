@@ -1,8 +1,8 @@
 import nextConnect from 'next-connect';
 
-import AppError from '../../../../../util/appError';
-import dbConnect from '../../../../../util/mongodb';
-import Application from '../../../../../models/applicationModel';
+import AppError from '../../../../util/appError';
+import dbConnect from '../../../../util/mongodb';
+import Application from '../../../../models/applicationModel';
 
 const updateApp = async (req, res) => {
   try {

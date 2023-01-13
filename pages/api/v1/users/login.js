@@ -2,9 +2,9 @@ import nextConnect from 'next-connect';
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 
-import dbConnect from '../../../../../util/mongodb';
-import User from '../../../../../models/userModel';
-import AppError from '../../../../../util/appError';
+import dbConnect from '../../../../util/mongodb';
+import User from '../../../../models/userModel';
+import AppError from '../../../../util/appError';
 
 const connect = async () => await dbConnect();
 

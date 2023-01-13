@@ -3,7 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-import Logo from '../../public/images/shugasTitleLogoTeal.svg';
+import Logo from '../public/images/shugasTitleLogoTeal.svg';
 import NavLink from './NavLink';
 
 const navItems = [

@@ -2,10 +2,9 @@ import multer from 'multer';
 import nextConnect from 'next-connect';
 import aws from 'aws-sdk';
 
-import Application from '../../../../../models/applicationModel';
-import AppError from '../../../../../util/appError';
-import dbConnect from '../../../../../util/mongodb';
-import sendEmail from '../../../../../util/Sendgrid';
+import Application from '../../../../models/applicationModel';
+import dbConnect from '../../../../util/mongodb';
+import sendEmail from '../../../../util/Sendgrid';
 
 const connect = async () => await dbConnect();
 

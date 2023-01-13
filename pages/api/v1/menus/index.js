@@ -2,8 +2,8 @@ import multer from 'multer';
 import nextConnect from 'next-connect';
 import aws from 'aws-sdk';
 
-import Menu from '../../../../../models/menuModel';
-import dbConnect from '../../../../../util/mongodb';
+import Menu from '../../../../models/menuModel';
+import dbConnect from '../../../../util/mongodb';
 
 const connect = async () => await dbConnect();
 

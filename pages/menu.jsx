@@ -1,20 +1,16 @@
 import { Flex, Spinner, Heading } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
-import styled from '@emotion/styled';
 
 import MenuView from '../components/MenuView';
 
 const Menu = () => {
-  let file;
+  const [file, setFile] = useState(null);
   const fetcher = (url) => axios.get(url).then((res) => res.data.data);
-  const { data, error, isValidating } = useSWR(
-    '/api/v1/menus/current',
-    fetcher
-  );
+  const { data, isValidating } = useSWR('/api/v1/menus/current', fetcher);
   if (!!data) {
-    file = data;
+    setFile(data);
   }
 
   return (

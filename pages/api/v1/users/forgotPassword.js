@@ -4,10 +4,10 @@ import { serialize } from 'cookie';
 import crypto from 'crypto';
 import sgMail from '@sendgrid/mail';
 
-import catchAsync from '../../../../../util/catchAsync';
-import User from '../../../../../models/userModel';
-import dbConnect from '../../../../../util/mongodb';
-import AppError from '../../../../../util/appError';
+import catchAsync from '../../../../util/catchAsync';
+import User from '../../../../models/userModel';
+import dbConnect from '../../../../util/mongodb';
+import AppError from '../../../../util/appError';
 
 const connect = async () => await dbConnect();
 

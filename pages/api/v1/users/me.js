@@ -2,9 +2,9 @@ import nextConnect from 'next-connect';
 import promisify from 'util.promisify';
 import jwt from 'jsonwebtoken';
 
-import User from '../../../../../models/userModel';
-import dbConnect from '../../../../../util/mongodb';
-import AppError from '../../../../../util/appError';
+import User from '../../../../models/userModel';
+import dbConnect from '../../../../util/mongodb';
+import AppError from '../../../../util/appError';
 
 const onError = (err, req, res, next) => {
   console.log('SERVER ERROR', err);
