@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+import dynamic from 'next/dynamic';
+import { pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import throttle from 'lodash.throttle';
-import { Box } from '@chakra-ui/react';
+const PdfComponent = dynamic(import('./PdfComponent'), { ssr: false });
 
 class MenuView extends PureComponent {
   constructor(props) {
@@ -59,32 +60,5 @@ class MenuView extends PureComponent {
     );
   }
 }
-
-const PdfComponent = (props) => {
-  const [numPages, setNumPages] = React.useState([]);
-  const { doc, wrapperDivSize } = props;
-  return (
-    <>
-      <Document
-        file={doc.data.fileName}
-        onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-      >
-        {Array.apply(null, Array(numPages))
-          .map((_, i) => i + 1)
-          .map((page) => (
-            <Box
-              key={page}
-              style={{
-                marginBottom: '8px',
-                marginTop: page === 1 ? '8px' : '0',
-              }}
-            >
-              <Page pageNumber={page} width={wrapperDivSize} />
-            </Box>
-          ))}
-      </Document>
-    </>
-  );
-};
 
 export default MenuView;
