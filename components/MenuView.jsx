@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { pdfjs } from 'react-pdf';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import throttle from 'lodash.throttle';
 const PdfComponent = dynamic(import('./PdfComponent'), { ssr: false });
 
@@ -15,7 +13,6 @@ class MenuView extends PureComponent {
   }
 
   componentDidMount() {
-    console.log(pdfjs.version);
     this.setDivSize();
     window.addEventListener('resize', this.throttledSetDivSize);
   }

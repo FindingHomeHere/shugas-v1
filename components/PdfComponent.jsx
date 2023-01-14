@@ -10,6 +10,7 @@ const PdfComponent = (props) => {
       <Document
         file={doc.data.fileName}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+        renderMode='svg'
       >
         {Array.apply(null, Array(numPages))
           .map((_, i) => i + 1)
