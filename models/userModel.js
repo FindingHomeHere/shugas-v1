@@ -91,7 +91,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .digest('hex');
 
   // Sets expiration to 1 hr
-  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  this.passwordResetExpires = Date.now() + 20 * 60 * 1000;
 
   return resetToken;
 };

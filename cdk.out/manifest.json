@@ -1,0 +1,75 @@
+{
+  "version": "12.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "shugassite": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "shugassite.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/shugassite/shugassite/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "shugassite7B29DDDA",
+            "trace": [
+              "new Bucket (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/aws-s3/lib/bucket.js:573:26)",
+              "new HelloCdkStack (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/lib/hello-cdk-stack.js:8:5)",
+              "Object.<anonymous> (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/bin/hello-cdk.js:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1109:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1138:10)",
+              "Module.load (node:internal/modules/cjs/loader:989:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:829:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/shugassite/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:185:9)",
+              "visit (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:182:9)",
+              "injectMetadataResources (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (node:events:472:26)",
+              "process.emit (node:events:365:28)"
+            ]
+          }
+        ],
+        "/shugassite/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:30:35)",
+              "/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:128:9",
+              "visit (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:185:9)",
+              "visit (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:182:9)",
+              "injectMetadataResources (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:117:5)",
+              "Object.synthesize (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/private/synthesis.js:17:5)",
+              "App.synth (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/stage.js:100:41)",
+              "process.<anonymous> (/Users/isaacjohnson/Desktop/IJDev/Shugas/client/node_modules/@aws-cdk/core/lib/app.js:50:51)",
+              "Object.onceWrapper (node:events:472:26)",
+              "process.emit (node:events:365:28)"
+            ]
+          }
+        ]
+      },
+      "displayName": "shugassite"
+    }
+  }
+}
