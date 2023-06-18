@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const menuSchema = new mongoose.Schema(
+const eventSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -21,4 +21,4 @@ const menuSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.Menu || mongoose.model('Menu', menuSchema);
+export default mongoose.models.Event || mongoose.model('Event', eventSchema);
