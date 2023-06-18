@@ -9,6 +9,7 @@ import NavLink from './NavLink';
 const navItems = [
   { link: '/', text: 'Home', isExternal: false },
   { link: '/menu', text: 'Menu', isExternal: false },
+  { link: '/events', text: 'MicroEvents', isExternal: false },
   {
     link: 'https://direct.chownow.com/order/18908/locations/27115',
     text: 'Order Online',
