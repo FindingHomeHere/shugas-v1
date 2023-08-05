@@ -10,23 +10,17 @@ export default class EventDrop extends Component {
     this.state = {
       file: null,
       error: null,
+      isLoading: false,
     };
     this.token = this.props.token;
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  isDisabled() {
-    if (this.state.error) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   async onFormSubmit(e) {
     try {
       e.preventDefault();
+      this.setState({ ...this.state, isLoading: true });
       let formData = new FormData();
       formData.append('event', this.state.file);
 
@@ -42,6 +36,8 @@ export default class EventDrop extends Component {
       alert('Your event menu has been uploaded!');
     } catch (err) {
       console.error(err);
+    } finally {
+      this.setState({ ...this.state, isLoading: false });
     }
   }
 
@@ -79,7 +75,8 @@ export default class EventDrop extends Component {
         <Button
           mt={2}
           colorScheme='brand'
-          isDisabled={this.isDisabled()}
+          isDisabled={!!this.state.error}
+          isLoading={this.state.isLoading}
           type='submit'
         >
           Upload
