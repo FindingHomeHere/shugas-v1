@@ -31,7 +31,7 @@ const updateMenu = async (req, res) => {
       ACL: 'public-read',
     };
 
-    const post = s3.upload(params, async (err, data) => {
+    s3.upload(params, async (err, data) => {
       try {
         const fileName = data.Location;
         const doc = await Menu.findByIdAndUpdate(
@@ -41,11 +41,10 @@ const updateMenu = async (req, res) => {
           }
         );
 
-        res.status(201).json({
+        if (err) throw err;
+
+        return res.status(200).json({
           status: 'success',
-          data: {
-            doc,
-          },
         });
       } catch (err) {
         console.error(err);

@@ -56,5 +56,6 @@
   "license": "MIT",
   "resolutions": {
     "webpack": "^5.0.0-beta.30"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }
