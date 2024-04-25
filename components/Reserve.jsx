@@ -1,35 +1,33 @@
 import React from 'react';
-import { Stack } from '@chakra-ui/react';
+import { VStack, Button } from '@chakra-ui/react';
 import Image from 'next/image';
+
+import Link from 'next/link';
 
 const Reserve = () => {
   return (
-    <Stack
+    <VStack
       direction={{ base: 'column', md: 'row' }}
       p={{ base: 2, md: 'sm', lg: 'lg' }}
       my={{ base: 4, md: 'lg' }}
       justify='center'
       h='contain'
     >
-      <iframe
-        id='yelp-reservations-widget'
-        width='100%'
-        height='440'
-        src='//www.yelp.com/reservations/shugas-colorado-springs/widget?orientation=vertical&color-scheme=light'
-        title='Make a reservation'
+      <Link
+        href='https://reserve.spoton.com/web/restaurant.html?restaurantId=66741'
+        target='_blank'
+        rel='noopener noreferrer'
+        passHref
       >
-        {' '}
-        <a href='https://www.yelp.com/reservations/shugas-colorado-springs'>
-          Reserve at Shuga's on Yelp
-        </a>{' '}
-      </iframe>
+        <Button colorScheme='brand'>click to reserve</Button>
+      </Link>
       <Image
         src='/images/twentyone.jpg'
         alt="Shuga's 21st anniversary"
         width={900}
         height={440}
       />
-    </Stack>
+    </VStack>
   );
 };
 

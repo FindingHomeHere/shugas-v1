@@ -12,7 +12,7 @@ const navItems = [
   { link: '/reserve', text: 'Reservations', isExternal: false },
   { link: '/events', text: 'Microevents', isExternal: false },
   {
-    link: 'https://direct.chownow.com/order/18908/locations/27115',
+    link: 'https://order.spoton.com/so-shugas-18540/colorado-springs-co/66034d770c490a003ec76f29',
     text: 'Order Online',
     isExternal: true,
   },
